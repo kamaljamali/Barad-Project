@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-function ValidationRuleService() { }
+function ValidationRuleService() {}
 module.exports = ValidationRuleService;
 
 /**
@@ -8,6 +8,4 @@ module.exports = ValidationRuleService;
  */
 ValidationRuleService.boot = function boot() {
     require("../helpers/service-helpers/user-service-heper.js");
-    require("../helpers/service-helpers/article-type-service-heper.js");
-    require("../helpers/service-helpers/article-service-heper.js");
 };
