@@ -35,11 +35,10 @@ ExpressSessionHelper.setupConfig = function setupConfig(session) {
  * Setup redis-store
  */
 ExpressSessionHelper.setupRedisStore = function setupRedisStore(session) {
-    // const redisStore = ConnectRedis(session);
-    // const store = new redisStore({
-    //     client: Redis.createClient()
-    // });
+    const redisStore = ConnectRedis(session);
+    const store = new redisStore({
+        client: Redis.createClient()
+    });
 
-    // return store;
-    return ''
+    return store;
 };

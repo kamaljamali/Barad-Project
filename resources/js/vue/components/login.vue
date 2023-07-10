@@ -37,20 +37,21 @@
                       )
                       div
                         | {{ data.ques.time }}
-                span.button.header-buttons.back2.p-3.mt-5
-                  img.small-icon.mr-2(
-                    src="../../../images/pages/leagues/arrow-left-condition.webp"
-                  )
-                  | شما
-              .is-light.mt-5.column.is-one-third-mobile(
+                .mt-5
+                  span.is-title-bar-title.is-title-bar-white.back2.p-2.is-size-6
+                    | شما
+                    img.small-icon.mr-2(
+                      src="../../../images/pages/leagues/arrow-left-condition.webp"
+                    )
+              .is-light.mt-5.column(
                 v-if="shouldRenderTable"
               )
                 .is-pulled-left(v-if="data.answer")
-                  .button.back2.header-buttons.is-pulled-left.p-3.mt-6.mr-1
-                    | AMAX AI
+                  span.is-title-bar-title.is-title-bar-white.back2.p-2.is-size-6.is-pulled-left.mt-6.mr-1
                     img.small-icon.ml-2(
                       src="../../../images/pages/leagues/arrow-right-condition.webp"
                     )
+                    | AMAX AI
                   .mt-5.is-flex.column
                     .background1(v-if="Array.isArray(data.answer.data)")
                       table.is-pulled-left
@@ -77,31 +78,33 @@
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    .curserrr.card.column.ml-1.is-size-7-mobile.py-4.column.mt-2.is-flex.is-justify-content-center.is-size-6(
+                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.mt-2.is-flex.is-justify-content-center.is-size-6(
                       :disabled="disabled",
-                      @click="HighVolume()",
-                      type="button"
+                      @click="HighVolume()"
                     )
                       | {{ quetions_title.HighVolume_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    .card.column.ml-1.is-size-7-mobile.pt-4.pb-2.column.is-flex.is-justify-content-center.rtl(
+                    button.button.card.column.ml-1.is-size-7-mobile.pt-4.pb-2.column.is-flex.is-justify-content-center.rtl(
                       :disabled="disabled",
                       @click="checkSymbol()"
                     )
-                      search(
-                        ref="search"
-                        :list-company="listCompany"
+                      | رو برام بچک
+                      input.input.sizeIn.is-small(
+                        type="text",
+                        v-model="inptext"
                       )
+                      |
+                      | نماد
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    .card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :disabled="disabled",
                       @click="fullSupply()"
                     )
                       | {{ quetions_title.fullSupply_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    .card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :disabled="disabled",
                       @click="amaxLeague()"
                     )
@@ -109,13 +112,13 @@
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    .card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :disabled="disabled",
                       @click="greatSymbol()"
                     )
                       | {{ quetions_title.greatSymbol_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    .card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :disabled="disabled",
                       @click="HighPurchasingPower()"
                     )
@@ -125,18 +128,8 @@
 <script>
 "use strict";
 const AxiosHelper = require("JS-HELPERS/axios-helper");
-import search from "./general/search-company.vue";
 export default {
   name: "Login",
-  components:{
-    search
-  },
-  props:{
-    listCompany:{
-      type:String,
-      default:null
-    }
-  },
   data: () => ({
     disabled: false,
     inptext: "",
@@ -485,10 +478,6 @@ export default {
 
 
 <style>
-.curserrr[disabled]{
-  cursor: no-drop;
-}
-
 .sizeIn {
   width: 35%;
   /* font-size: ; */
