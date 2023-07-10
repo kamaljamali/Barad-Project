@@ -82,11 +82,26 @@ mix.js("resources/js/core/kernel.js", `${output}/js/core`)
         `${output}/js/pages/user/index`
     );
 
+// /* SASS */
+// mix.sass("resources/sass/core/kernel.scss", `${output}/css/core`)
+//     .sass("resources/sass/global/app.scss", `${output}/css/global`)
+//     .sass("resources/sass/pages/home/index.scss", `${output}/css/pages/home`)
+//     .sass("resources/sass/pages/auth/login.scss", `${output}/css/pages/auth`);
+
+
+
 /* SASS */
-mix.sass("resources/sass/core/kernel.scss", `${output}/css/core`)
-    .sass("resources/sass/global/app.scss", `${output}/css/global`)
+mix
+    .sass("resources/sass/core/kernel.scss", `${output}/css/core`)
+    .sass("resources/sass/layout/layout.scss", `${output}/css/layout`)
+    .sass(
+        "resources/sass/algorithm_result/algorithm_result.scss",
+        `${output}/css/algorithm_result`
+    )
     .sass("resources/sass/pages/home/index.scss", `${output}/css/pages/home`)
+    .sass("resources/sass/pages/global/app.scss", `${output}/css/pages/global`)
     .sass("resources/sass/pages/auth/login.scss", `${output}/css/pages/auth`);
+
 
 // /* Copy directory */
 // mix.copyDirectory(

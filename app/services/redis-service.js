@@ -12,16 +12,17 @@ module.exports = RedisService;
  * Boot function
  */
 RedisService.boot = function boot(server) {
-    return new Promise((resolve, reject) => {
-        const client = redis.createClient();
+    // return new Promise((resolve, reject) => {
+    //     const client = redis.createClient();
 
-        client.on("error", function (error) {
-            /* Logger.error(error); */
-        });
+    //     client.on("error", function (error) {
+    //         /* Logger.error(error); */
+    //     });
 
-        /* Store as a global object */
-        global.redisClient = client;
+    //     /* Store as a global object */
+    //     global.redisClient = client;
 
-        resolve(client);
-    })
+    //     resolve(client);
+    // })
+    return ''
 };

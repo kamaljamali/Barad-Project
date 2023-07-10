@@ -1,9 +1,15 @@
-html,
-body {
-    font-family: 'Open Sans';
+@font-face {
+    font-family: BYekan;
+    src: url("../../../fonts/iranyekanwebregularfanum.eot");
+    src: url("../../../fonts/iranyekanwebregularfanum.ttf") format("truetype"),
+        url("../../../fonts/iranyekanwebregularfanum.woff")
+            format("embedded-opentype");
 }
 
-img {
-    padding: 5px;
-    border: 1px solid #ccc;
-}
+
+/*
+.container {
+    background-color: #32353E !important;
+} */
+
+

@@ -1,0 +1,38 @@
+<svg width="46" height="48" viewBox="0 0 46 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1" fill="white">
+<rect width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-1-inside-1)"/>
+<mask id="path-2-inside-2" fill="white">
+<rect x="16.1404" width="13.7193" height="13.7193" rx="2"/>
+</mask>
+<rect x="16.1404" width="13.7193" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-2-inside-2)"/>
+<mask id="path-3-inside-3" fill="white">
+<rect x="33.0878" width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect x="33.0878" width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-3-inside-3)"/>
+<mask id="path-4-inside-4" fill="white">
+<rect x="33.0878" y="16.9473" width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect x="33.0878" y="16.9473" width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-4-inside-4)"/>
+<mask id="path-5-inside-5" fill="white">
+<rect x="33.0878" y="33.8947" width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect x="33.0878" y="33.8947" width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-5-inside-5)"/>
+<mask id="path-6-inside-6" fill="white">
+<rect x="16.1404" y="33.8947" width="13.7193" height="13.7193" rx="2"/>
+</mask>
+<rect x="16.1404" y="33.8947" width="13.7193" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-6-inside-6)"/>
+<mask id="path-7-inside-7" fill="white">
+<rect x="16.1404" y="16.9473" width="13.7193" height="13.7193" rx="2"/>
+</mask>
+<rect x="16.1404" y="16.9473" width="13.7193" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-7-inside-7)"/>
+<mask id="path-8-inside-8" fill="white">
+<rect y="33.8947" width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect y="33.8947" width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-8-inside-8)"/>
+<mask id="path-9-inside-9" fill="white">
+<rect y="16.9473" width="12.9123" height="13.7193" rx="2"/>
+</mask>
+<rect y="16.9473" width="12.9123" height="13.7193" rx="2" stroke="#32353E" stroke-width="6" mask="url(#path-9-inside-9)"/>
+</svg>
