@@ -43,9 +43,7 @@
                     img.small-icon.mr-2(
                       src="../../../images/pages/leagues/arrow-left-condition.webp"
                     )
-              .is-light.mt-5.column(
-                v-if="shouldRenderTable"
-              )
+              .is-light.mt-5.column(v-if="shouldRenderTable")
                 .is-pulled-left(v-if="data.answer")
                   span.is-title-bar-title.is-title-bar-white.back2.p-2.is-size-6.is-pulled-left.mt-6.mr-1
                     img.small-icon.ml-2(
@@ -78,14 +76,14 @@
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.mt-2.is-flex.is-justify-content-center.is-size-6(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.py-4.column.mt-2.is-flex.is-justify-content-center.is-size-6(
+                      :class="{ hover: disabled }",
                       @click="HighVolume()"
                     )
                       | {{ quetions_title.HighVolume_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    button.button.card.column.ml-1.is-size-7-mobile.pt-4.pb-2.column.is-flex.is-justify-content-center.rtl(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.pt-4.pb-2.column.is-flex.is-justify-content-center.rtl(
+                      :class="{ hover: disabled }",
                       @click="checkSymbol()"
                     )
                       | رو برام بچک
@@ -98,28 +96,28 @@
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                      :class="{ hover: disabled }",
                       @click="fullSupply()"
                     )
                       | {{ quetions_title.fullSupply_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                      :class="{ hover: disabled }",
                       @click="amaxLeague()"
                     )
                       | {{ quetions_title.amaxLeague_title }}
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
                 .container
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
-                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                      :class="{ hover: disabled }",
                       @click="greatSymbol()"
                     )
                       | {{ quetions_title.greatSymbol_title }}
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0
-                    button.button.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
-                      :disabled="disabled",
+                    a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
+                      :class="{ hover: disabled }",
                       @click="HighPurchasingPower()"
                     )
                       | {{ quetions_title.HighPurchasing_title }}
@@ -210,154 +208,26 @@ export default {
       chatContainer.scrollTop = chatContainer.scrollHeight;
     },
     HighPurchasingPower() {
-      this.disabled = true;
-      let date = new Date();
-      this.date =
-        date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-      let time_question = this.gettime();
-      this.tableData.push({
-        ques: {
-          name: this.quetions_title.HighPurchasing_title,
-          seen: false,
-          time: time_question,
-        },
-      });
-      AxiosHelper.send("get", this.urls.HighPurchasing_url)
-        .then((data) => {
-          this.tdataCatch = true;
-          let temp = this.getdata();
-          // this.table = temp;
-
-          let time_question = this.gettime();
-          this.tableData[this.tableData.length - 1].answer = {
-            data: temp,
-            time: time_question,
-          };
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.shouldRenderTable = false;
-          this.$nextTick(() => {
-            this.shouldRenderTable = true;
-          });
-          this.disabled = false;
-        })
-        .catch((err) => {
-          this.tdataCatch = false;
-          this.tableData[this.tableData.length - 1].answer = {
-            data: this.notAnswer,
-            time: time_question,
-          };
-
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.disabled = false;
-        });
-
-      // this.table = "";
-    },
-    amaxLeague() {
-      this.disabled = true;
-      let date = new Date();
-      this.date =
-        date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-      let time_question = this.gettime();
-      this.tableData.push({
-        ques: {
-          name: this.quetions_title.amaxLeague_title,
-          seen: false,
-          time: time_question,
-        },
-      });
-      AxiosHelper.send("get", this.urls.amaxLeague_url)
-        .then((data) => {
-          this.tdataCatch = true;
-          let temp = this.getdata();
-          // this.table = temp;
-
-          let time_question = this.gettime();
-          this.tableData[this.tableData.length - 1].answer = {
-            data: temp,
-            time: time_question,
-          };
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.shouldRenderTable = false;
-          this.$nextTick(() => {
-            this.shouldRenderTable = true;
-          });
-          this.disabled = false;
-        })
-        .catch((err) => {
-          this.tdataCatch = false;
-          this.tableData[this.tableData.length - 1].answer = {
-            data: this.notAnswer,
-            time: time_question,
-          };
-
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.disabled = false;
-        });
-    },
-    greatSymbol() {
-      this.disabled = true;
-      let date = new Date();
-      this.date =
-        date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-      let time_question = this.gettime();
-      this.tableData.push({
-        ques: {
-          name: this.quetions_title.greatSymbol_title,
-          seen: false,
-          time: time_question,
-        },
-      });
-      AxiosHelper.send("get", this.urls.greatSymbol_url)
-        .then((data) => {
-          this.tdataCatch = true;
-          let temp = this.getdata();
-          // this.table = temp;
-
-          let time_question = this.gettime();
-          this.tableData[this.tableData.length - 1].answer = {
-            data: temp,
-            time: time_question,
-          };
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.shouldRenderTable = false;
-          this.$nextTick(() => {
-            this.shouldRenderTable = true;
-          });
-          this.disabled = false;
-        })
-        .catch((err) => {
-          this.tdataCatch = false;
-          this.tableData[this.tableData.length - 1].answer = {
-            data: this.notAnswer,
-            time: time_question,
-          };
-
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.disabled = false;
-        });
-    },
-    checkSymbol() {
-      if (this.inptext !== "") {
+      if (this.disabled == false) {
         this.disabled = true;
         let date = new Date();
         this.date =
           date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-        let tt = new Date();
-        let tim = tt.getHours() + ":" + tt.getMinutes();
+        let time_question = this.gettime();
         this.tableData.push({
           ques: {
-            name: `نماد ${this.inptext} رو برام بچک`,
+            name: this.quetions_title.HighPurchasing_title,
             seen: false,
             time: time_question,
           },
-          answer: { data: "", time: tim },
         });
-        fetch(this.urls.checkSymbol_url)
-          .then((response) => response.json())
+        AxiosHelper.send("get", this.urls.HighPurchasing_url)
           .then((data) => {
+            this.tdataCatch = true;
             let temp = this.getdata();
             // this.table = temp;
+
+            let time_question = this.gettime();
             this.tableData[this.tableData.length - 1].answer = {
               data: temp,
               time: time_question,
@@ -369,9 +239,40 @@ export default {
             });
             this.disabled = false;
           })
-          .catch((error) => {
+          .catch((err) => {
+            this.tdataCatch = false;
             this.tableData[this.tableData.length - 1].answer = {
               data: this.notAnswer,
+              time: time_question,
+            };
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.disabled = false;
+          });
+      }
+    },
+    amaxLeague() {
+      if (this.disabled == false) {
+        this.disabled = true;
+        let date = new Date();
+        this.date =
+          date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
+        let time_question = this.gettime();
+        this.tableData.push({
+          ques: {
+            name: this.quetions_title.amaxLeague_title,
+            seen: false,
+            time: time_question,
+          },
+        });
+        AxiosHelper.send("get", this.urls.amaxLeague_url)
+          .then((data) => {
+            this.tdataCatch = true;
+            let temp = this.getdata();
+            // this.table = temp;
+
+            let time_question = this.gettime();
+            this.tableData[this.tableData.length - 1].answer = {
+              data: temp,
               time: time_question,
             };
             this.tableData[this.tableData.length - 1].ques.seen = true;
@@ -380,95 +281,197 @@ export default {
               this.shouldRenderTable = true;
             });
             this.disabled = false;
+          })
+          .catch((err) => {
+            this.tdataCatch = false;
+            this.tableData[this.tableData.length - 1].answer = {
+              data: this.notAnswer,
+              time: time_question,
+            };
+
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.disabled = false;
           });
-        this.inptext = "";
       }
-      // this.table = "";
+    },
+    greatSymbol() {
+      if (this.disabled == false) {
+        this.disabled = true;
+        let date = new Date();
+        this.date =
+          date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
+        let time_question = this.gettime();
+        this.tableData.push({
+          ques: {
+            name: this.quetions_title.greatSymbol_title,
+            seen: false,
+            time: time_question,
+          },
+        });
+        AxiosHelper.send("get", this.urls.greatSymbol_url)
+          .then((data) => {
+            this.tdataCatch = true;
+            let temp = this.getdata();
+            // this.table = temp;
+
+            let time_question = this.gettime();
+            this.tableData[this.tableData.length - 1].answer = {
+              data: temp,
+              time: time_question,
+            };
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.shouldRenderTable = false;
+            this.$nextTick(() => {
+              this.shouldRenderTable = true;
+            });
+            this.disabled = false;
+          })
+          .catch((err) => {
+            this.tdataCatch = false;
+            this.tableData[this.tableData.length - 1].answer = {
+              data: this.notAnswer,
+              time: time_question,
+            };
+
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.disabled = false;
+          });
+      }
+    },
+    checkSymbol() {
+      if (this.disabled == false) {
+        if (this.inptext !== "") {
+          this.disabled = true;
+          let date = new Date();
+          this.date =
+            date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
+          let time_question = this.gettime();
+          this.tableData.push({
+            ques: {
+              name: `نماد ${this.inptext} رو برام بچک`,
+              seen: false,
+              time: time_question,
+            },
+          });
+          fetch(this.urls.checkSymbol_url)
+            .then((response) => response.json())
+            .then((data) => {
+              let temp = this.getdata();
+              // this.table = temp;
+              this.tableData[this.tableData.length - 1].answer = {
+                data: temp,
+                time: time_question,
+              };
+              this.tableData[this.tableData.length - 1].ques.seen = true;
+              this.shouldRenderTable = false;
+              this.$nextTick(() => {
+                this.shouldRenderTable = true;
+              });
+              this.disabled = false;
+            })
+            .catch((error) => {
+              this.tableData[this.tableData.length - 1].answer = {
+                data: this.notAnswer,
+                time: time_question,
+              };
+              this.tableData[this.tableData.length - 1].ques.seen = true;
+              this.shouldRenderTable = false;
+              this.$nextTick(() => {
+                this.shouldRenderTable = true;
+              });
+              this.disabled = false;
+            });
+          this.inptext = "";
+        }
+      }
     },
     HighVolume() {
-      this.disabled = true;
-      let date = new Date();
-      this.date =
-        date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-      let time_question = this.gettime();
-      this.tableData.push({
-        ques: {
-          name: this.quetions_title.HighVolume_title,
-          seen: false,
-          time: time_question,
-        },
-      });
-      AxiosHelper.send("get", this.urls.HighVolume_url)
-        .then((data) => {
-          this.tdataCatch = true;
-          let temp = this.getdata();
-          // this.table = temp;
-
-          let time_question = this.gettime();
-          this.tableData[this.tableData.length - 1].answer = {
-            data: temp,
+      if (this.disabled == false) {
+        this.disabled = true;
+        let date = new Date();
+        this.date =
+          date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
+        let time_question = this.gettime();
+        this.tableData.push({
+          ques: {
+            name: this.quetions_title.HighVolume_title,
+            seen: false,
             time: time_question,
-          };
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.shouldRenderTable = false;
-          this.$nextTick(() => {
-            this.shouldRenderTable = true;
-          });
-          this.disabled = false;
-        })
-        .catch((err) => {
-          this.tdataCatch = false;
-          this.tableData[this.tableData.length - 1].answer = {
-            data: this.notAnswer,
-            time: time_question,
-          };
-
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.disabled = false;
+          },
         });
+        AxiosHelper.send("get", this.urls.HighVolume_url)
+          .then((data) => {
+            this.tdataCatch = true;
+            let temp = this.getdata();
+            // this.table = temp;
+
+            let time_question = this.gettime();
+            this.tableData[this.tableData.length - 1].answer = {
+              data: temp,
+              time: time_question,
+            };
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.shouldRenderTable = false;
+            this.$nextTick(() => {
+              this.shouldRenderTable = true;
+            });
+            this.disabled = false;
+          })
+          .catch((err) => {
+            this.tdataCatch = false;
+            this.tableData[this.tableData.length - 1].answer = {
+              data: this.notAnswer,
+              time: time_question,
+            };
+
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.disabled = false;
+          });
+      }
     },
     fullSupply() {
-      this.disabled = true;
-      let date = new Date();
-      this.date =
-        date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
-      let time_question = this.gettime();
-      this.tableData.push({
-        ques: {
-          name: this.quetions_title.fullSupply_title,
-          seen: false,
-          time: time_question,
-        },
-      });
-      AxiosHelper.send("get", this.urls.fullSupply_url)
-        .then((data) => {
-          this.tdataCatch = true;
-          let temp = this.getdata();
-          // this.table = temp;
-
-          let time_question = this.gettime();
-          this.tableData[this.tableData.length - 1].answer = {
-            data: temp,
+      if (this.disabled == false) {
+        this.disabled = true;
+        let date = new Date();
+        this.date =
+          date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
+        let time_question = this.gettime();
+        this.tableData.push({
+          ques: {
+            name: this.quetions_title.fullSupply_title,
+            seen: false,
             time: time_question,
-          };
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.shouldRenderTable = false;
-          this.$nextTick(() => {
-            this.shouldRenderTable = true;
-          });
-          this.disabled = false;
-        })
-        .catch((err) => {
-          
-          this.tdataCatch = false;
-          this.tableData[this.tableData.length - 1].answer = {
-            data: this.notAnswer,
-            time: time_question,
-          };
-
-          this.tableData[this.tableData.length - 1].ques.seen = true;
-          this.disabled = false;
+          },
         });
+        AxiosHelper.send("get", this.urls.fullSupply_url)
+          .then((data) => {
+            this.tdataCatch = true;
+            let temp = this.getdata();
+            // this.table = temp;
+
+            let time_question = this.gettime();
+            this.tableData[this.tableData.length - 1].answer = {
+              data: temp,
+              time: time_question,
+            };
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.shouldRenderTable = false;
+            this.$nextTick(() => {
+              this.shouldRenderTable = true;
+            });
+            this.disabled = false;
+          })
+          .catch((err) => {
+            this.tdataCatch = false;
+            this.tableData[this.tableData.length - 1].answer = {
+              data: this.notAnswer,
+              time: time_question,
+            };
+
+            this.tableData[this.tableData.length - 1].ques.seen = true;
+            this.disabled = false;
+          });
+      }
     },
   },
 };
@@ -482,6 +485,9 @@ export default {
   width: 35%;
   /* font-size: ; */
   /* height: 75%; */
+}
+.hover {
+  cursor: no-drop;
 }
 
 .background1 {
