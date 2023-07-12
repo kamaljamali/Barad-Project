@@ -71,10 +71,10 @@
                     .background1(v-else)
                       | {{ data.answer.data }}
                       .w {{ data.answer.time }}
-          .ml-4.mr-4
+          .ml-6.mr-6
             .columns.is-mobile.is-multiline.mb-0
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile
-                .container
+                .container.mr-1.ml-1
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
                     a.card.column.ml-1.is-size-7-mobile.py-4.column.mt-2.is-flex.is-justify-content-center.is-size-6(
                       :class="{ hover: disabled }",
@@ -94,7 +94,7 @@
                       |
                       | نماد
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
-                .container
+                .container.mr-1.ml-1
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
                     a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :class="{ hover: disabled }",
@@ -108,7 +108,7 @@
                     )
                       | {{ quetions_title.amaxLeague_title }}
               .filter-box-section.column.px-0.is-4-desktop.is-12-mobile.mt-2
-                .container
+                .container.mr-1.ml-1
                   .column.item.item-icon.is-flex.is-justify-content-center.px-0.py-0
                     a.card.column.ml-1.is-size-7-mobile.py-4.column.is-flex.is-justify-content-center(
                       :class="{ hover: disabled }",
