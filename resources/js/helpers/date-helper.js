@@ -6,7 +6,7 @@ window.momentJalaali = require("moment-jalaali");
 /**
  * DateHelper
  */
-function DateHelper(){}
+function DateHelper() { }
 module.exports = DateHelper;
 
 //
@@ -26,19 +26,30 @@ DateHelper.toPersianDate = function toPersianDate(value, format, locale) {
 // To Persian Date
 //
 DateHelper.toPersianDateLong = function toPersianDateLong(value, locale) {
-    return DateHelper.toPersianDate(value, 'jYYYY-jMM-jDD HH:mm:ss', locale);
+    return DateHelper.toPersianDate(value, 'jYYYY-jMM-jDD HH:mm:SS', locale);
 };
 
 //
-// To Persian Date short
+// To Persian Date
 //
-DateHelper.toPersianDateShort = function toPersianDateShort(value, locale) {
-    return DateHelper.toPersianDate(value, 'jYYYY-jMM-jDD', locale);
+DateHelper.toPersianDateLongHM = function toPersianDateLong(value, locale) {
+    return DateHelper.toPersianDate(value, 'jYYYY/jMM/jDD - HH:mm', locale);
 };
 
 //
-// To Persian Date year
+// To Persian hours min
 //
-DateHelper.toPersianDateYear = function toPersianDateYear(value, locale) {
-    return DateHelper.toPersianDate(value, 'jYYYY', locale);
+DateHelper.toPersianDateHM = function toPersianDateHM(value, locale) {
+    return DateHelper.toPersianDate(value, 'H:mm', locale);
+};
+
+//
+// To Persian hours min
+//
+DateHelper.toServerDateHM = function toServerDateHM(value) {
+    let serverTime =
+        ("0" + value.getHours()).slice(-2) + ":" +
+        ("0" + value.getMinutes()).slice(-2);
+
+    return serverTime;
 };
